@@ -1,4 +1,5 @@
-import 'package:firebase_auth_package/src/auth_service.dart';
+import 'package:firebase_auth_package/firebase_auth_package.dart';
+import 'package:firebase_auth_package/src/service/auth_service.dart';
 import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';
 
 class AuthServiceMock extends AuthService {
@@ -39,8 +40,20 @@ class AuthServiceMock extends AuthService {
   }
 
   @override
-  Future<void> recoverPassword(String email) {
-    return null;
+  Future<void> recoverPassword(String email) async {
+    if (email == validEmail) {
+      return;
+    }
+
+    if (email == invalidEmail) {
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_INVALID_EMAIL);
+    }
+
+    if (email == notFountEmail) {
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_USER_NOT_FOUND);
+    }
+
+    return;
   }
 
   @override

@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_package/src/auth_service.dart';
+import 'package:firebase_auth_package/src/service/auth_service.dart';
 
 class AuthServiceFirestore implements AuthService {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -24,5 +24,9 @@ class AuthServiceFirestore implements AuthService {
   @override
   Future<void> recoverPassword(String email) async {
     await _firebaseAuth.sendPasswordResetEmail(email: email);
+  }
+
+  Future<void> registerByGoogle() async {
+    // await _firebaseAuth.signinwith
   }
 }

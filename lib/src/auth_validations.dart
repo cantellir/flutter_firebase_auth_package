@@ -15,4 +15,8 @@ class AuthValidations {
       String password, String passwordConfirmation) {
     return (password == passwordConfirmation);
   }
+
+  static bool isRecoverEmailFilled(String email) {
+    return (email.isNotEmpty);
+  }
 }

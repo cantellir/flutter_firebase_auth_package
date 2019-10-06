@@ -1,4 +1,4 @@
-import 'package:firebase_auth_package/src/auth_register.dart';
+import 'package:firebase_auth_package/src/functions/auth_register.dart';
 import 'package:firebase_auth_package/src/exception/auth_exception_messages.dart';
 import 'package:flutter_test/flutter_test.dart';
 

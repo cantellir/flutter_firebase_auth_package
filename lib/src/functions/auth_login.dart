@@ -1,4 +1,4 @@
-import 'package:firebase_auth_package/src/auth_service.dart';
+import 'package:firebase_auth_package/src/service/auth_service.dart';
 import 'package:firebase_auth_package/src/auth_validations.dart';
 import 'package:firebase_auth_package/src/exception/auth_exception.dart';
 import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';

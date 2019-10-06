@@ -1,7 +1,8 @@
-import 'package:firebase_auth_package/src/auth_login.dart';
-import 'package:firebase_auth_package/src/auth_logout.dart';
-import 'package:firebase_auth_package/src/auth_register.dart';
-import 'package:firebase_auth_package/src/auth_service_firestore.dart';
+import 'package:firebase_auth_package/src/functions/auth_login.dart';
+import 'package:firebase_auth_package/src/functions/auth_logout.dart';
+import 'package:firebase_auth_package/src/functions/auth_recover_password.dart';
+import 'package:firebase_auth_package/src/functions/auth_register.dart';
+import 'package:firebase_auth_package/src/service/auth_service_firestore.dart';
 
 class AuthFunctions {
   AuthServiceFirestore _authServiceFirestore = AuthServiceFirestore();
@@ -21,5 +22,11 @@ class AuthFunctions {
   Future<void> logout() async {
     AuthLogout authLogout = AuthLogout(_authServiceFirestore);
     return await authLogout.logout();
+  }
+
+  Future<void> recoverPassword(String email) async {
+    AuthRecoverPassword authRecoverPassword =
+        AuthRecoverPassword(_authServiceFirestore);
+    return await authRecoverPassword.recoverPassword(email);
   }
 }

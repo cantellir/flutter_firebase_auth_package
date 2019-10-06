@@ -9,6 +9,8 @@ class AuthExceptionMap {
         AuthExceptionMessages.MESSAGE_PASSWORD_CONFIRMATION,
     AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL_PASSWORD:
         AuthExceptionMessages.MESSAGE_BLANK_EMAIL_PASSWORD,
+    AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL:
+        AuthExceptionMessages.MESSAGE_BLANK_EMAIL,
     AuthExceptionErrors.FIREBASE_ERROR_WRONG_PASSWORD:
         AuthExceptionMessages.MESSAGE_WRONG_PASSWORD,
     AuthExceptionErrors.FIREBASE_ERROR_INVALID_EMAIL:
