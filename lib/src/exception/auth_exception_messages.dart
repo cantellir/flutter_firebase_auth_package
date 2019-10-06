@@ -1,4 +1,4 @@
-class AuthExceptionsMessages {
+class AuthExceptionMessages {
   static const String MESSAGE_BLANK_FIELDS =
       'Todos os campos devem ser preenchidos';
   static const String MESSAGE_PASSWORD_CONFIRMATION =

@@ -1,4 +1,4 @@
-class AuthExceptionsErrors {
+class AuthExceptionErrors {
   static const String INTERNAL_ERROR_BLANK_FIELDS =
       'INTERNAL_ERROR_BLANK_FIELDS';
   static const String INTERNAL_ERROR_PASSWORD_CONFIRMATION =

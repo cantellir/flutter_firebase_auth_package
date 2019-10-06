@@ -10,5 +10,5 @@ library firebase_auth_package;
 // export 'src/auth_service.dart';
 // export 'src/auth_service_firestore.dart';
 export 'src/auth_functions.dart';
-export 'src/exceptions/auth_exceptions.dart';
-export 'src/exceptions/auth_exceptions_errors.dart';
+export 'src/exception/auth_exception.dart';
+export 'src/exception/auth_exception_errors.dart';

@@ -1,5 +1,5 @@
 import 'package:firebase_auth_package/src/auth_service.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions_errors.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';
 
 class AuthServiceMock extends AuthService {
   String validEmail = 'validemail@test.com';
@@ -19,15 +19,15 @@ class AuthServiceMock extends AuthService {
     }
 
     if (email == invalidEmail) {
-      throw Exception(AuthExceptionsErrors.FIREBASE_ERROR_INVALID_EMAIL);
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_INVALID_EMAIL);
     }
 
     if (password == invalidPassword) {
-      throw Exception(AuthExceptionsErrors.FIREBASE_ERROR_WRONG_PASSWORD);
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_WRONG_PASSWORD);
     }
 
     if (email == notFountEmail) {
-      throw Exception(AuthExceptionsErrors.FIREBASE_ERROR_USER_NOT_FOUND);
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_USER_NOT_FOUND);
     }
 
     return;
@@ -35,13 +35,11 @@ class AuthServiceMock extends AuthService {
 
   @override
   Future<void> logout() {
-    // TODO: implement logout
     return null;
   }
 
   @override
   Future<void> recoverPassword(String email) {
-    // TODO: implement recoverPassword
     return null;
   }
 
@@ -52,15 +50,15 @@ class AuthServiceMock extends AuthService {
     }
 
     if (email == invalidEmail) {
-      throw Exception(AuthExceptionsErrors.FIREBASE_ERROR_INVALID_EMAIL);
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_INVALID_EMAIL);
     }
 
     if (password.length < 6) {
-      throw Exception(AuthExceptionsErrors.FIREBASE_ERROR_WEAK_PASSWORD);
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_WEAK_PASSWORD);
     }
 
     if (email == registeredEmail) {
-      throw Exception(AuthExceptionsErrors.FIREBASE_ERROR_EMAIL_ALREADY_IN_USE);
+      throw Exception(AuthExceptionErrors.FIREBASE_ERROR_EMAIL_ALREADY_IN_USE);
     }
 
     return;

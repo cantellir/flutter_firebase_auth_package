@@ -1,5 +1,5 @@
 import 'package:firebase_auth_package/src/auth_register.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions_messages.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception_messages.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'auth_service_mock.dart';
@@ -18,7 +18,7 @@ void main() {
       expect(
           _authRegister.register('', '', '', ''),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_BLANK_FIELDS)));
+              e.message == AuthExceptionMessages.MESSAGE_BLANK_FIELDS)));
     });
 
     test('Register should fail with blank name', () {
@@ -26,7 +26,7 @@ void main() {
           _authRegister.register('', _authServiceMock.validEmail,
               _authServiceMock.validPassword, _authServiceMock.validPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_BLANK_FIELDS)));
+              e.message == AuthExceptionMessages.MESSAGE_BLANK_FIELDS)));
     });
 
     test('Register should fail with blank email', () {
@@ -34,7 +34,7 @@ void main() {
           _authRegister.register(_authServiceMock.validName, '',
               _authServiceMock.validPassword, _authServiceMock.validPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_BLANK_FIELDS)));
+              e.message == AuthExceptionMessages.MESSAGE_BLANK_FIELDS)));
     });
 
     test('Register should fail with blank password', () {
@@ -42,7 +42,7 @@ void main() {
           _authRegister.register(_authServiceMock.validName,
               _authServiceMock.validEmail, '', _authServiceMock.validPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_BLANK_FIELDS)));
+              e.message == AuthExceptionMessages.MESSAGE_BLANK_FIELDS)));
     });
 
     test('Register should fail with blank password confirmation', () {
@@ -50,7 +50,7 @@ void main() {
           _authRegister.register(_authServiceMock.validName,
               _authServiceMock.validEmail, _authServiceMock.validPassword, ''),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_BLANK_FIELDS)));
+              e.message == AuthExceptionMessages.MESSAGE_BLANK_FIELDS)));
     });
 
     test(
@@ -64,7 +64,7 @@ void main() {
               _authServiceMock.invalidPassword),
           throwsA(predicate((e) =>
               e.message ==
-              AuthExceptionsMessages.MESSAGE_PASSWORD_CONFIRMATION)));
+              AuthExceptionMessages.MESSAGE_PASSWORD_CONFIRMATION)));
     });
   });
 
@@ -98,7 +98,7 @@ void main() {
               _authServiceMock.validPassword,
               _authServiceMock.validPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_INVALID_EMAIL)));
+              e.message == AuthExceptionMessages.MESSAGE_INVALID_EMAIL)));
     });
 
     test('Register should fail if password is less than 6 characters', () {
@@ -109,7 +109,7 @@ void main() {
               _authServiceMock.weakPassword,
               _authServiceMock.weakPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_WEAK_PASSWORD)));
+              e.message == AuthExceptionMessages.MESSAGE_WEAK_PASSWORD)));
     });
 
     test('Register should fail if email already exists', () {
@@ -121,7 +121,7 @@ void main() {
               _authServiceMock.validPassword),
           throwsA(predicate((e) =>
               e.message ==
-              AuthExceptionsMessages.MESSAGE_EMAIL_ALREADY_IN_USE)));
+              AuthExceptionMessages.MESSAGE_EMAIL_ALREADY_IN_USE)));
     });
   });
 }

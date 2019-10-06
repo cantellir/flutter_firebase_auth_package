@@ -1,5 +1,5 @@
 import 'package:firebase_auth_package/src/auth_login.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions_messages.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception_messages.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'auth_service_mock.dart';
@@ -19,7 +19,7 @@ void main() {
           _authLogin.login('', ''),
           throwsA(predicate((e) =>
               e.message ==
-              AuthExceptionsMessages.MESSAGE_BLANK_EMAIL_PASSWORD)));
+              AuthExceptionMessages.MESSAGE_BLANK_EMAIL_PASSWORD)));
     });
 
     test('Login should fail with blank e-mail', () {
@@ -27,7 +27,7 @@ void main() {
           _authLogin.login('', _authServiceMock.validPassword),
           throwsA(predicate((e) =>
               e.message ==
-              AuthExceptionsMessages.MESSAGE_BLANK_EMAIL_PASSWORD)));
+              AuthExceptionMessages.MESSAGE_BLANK_EMAIL_PASSWORD)));
     });
 
     test('Login should fail with blank password', () {
@@ -35,7 +35,7 @@ void main() {
           _authLogin.login(_authServiceMock.validEmail, ''),
           throwsA(predicate((e) =>
               e.message ==
-              AuthExceptionsMessages.MESSAGE_BLANK_EMAIL_PASSWORD)));
+              AuthExceptionMessages.MESSAGE_BLANK_EMAIL_PASSWORD)));
     });
   });
 
@@ -45,7 +45,7 @@ void main() {
           _authLogin.login(
               _authServiceMock.invalidEmail, _authServiceMock.validPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_INVALID_EMAIL)));
+              e.message == AuthExceptionMessages.MESSAGE_INVALID_EMAIL)));
     });
 
     test('Login should fail with invalid firebase password', () {
@@ -53,7 +53,7 @@ void main() {
           _authLogin.login(
               _authServiceMock.validEmail, _authServiceMock.invalidPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_WRONG_PASSWORD)));
+              e.message == AuthExceptionMessages.MESSAGE_WRONG_PASSWORD)));
     });
 
     test('Login should fail with user not found in firebase', () {
@@ -61,7 +61,7 @@ void main() {
           _authLogin.login(
               _authServiceMock.notFountEmail, _authServiceMock.validPassword),
           throwsA(predicate((e) =>
-              e.message == AuthExceptionsMessages.MESSAGE_USER_NOT_FOUND)));
+              e.message == AuthExceptionMessages.MESSAGE_USER_NOT_FOUND)));
     });
   });
 }

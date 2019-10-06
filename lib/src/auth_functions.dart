@@ -1,4 +1,5 @@
 import 'package:firebase_auth_package/src/auth_login.dart';
+import 'package:firebase_auth_package/src/auth_logout.dart';
 import 'package:firebase_auth_package/src/auth_register.dart';
 import 'package:firebase_auth_package/src/auth_service_firestore.dart';
 
@@ -15,5 +16,10 @@ class AuthFunctions {
     AuthRegister authRegister = AuthRegister(_authServiceFirestore);
     return await authRegister.register(
         name, email, password, passwordConfirmation);
+  }
+
+  Future<void> logout() async {
+    AuthLogout authLogout = AuthLogout(_authServiceFirestore);
+    return await authLogout.logout();
   }
 }

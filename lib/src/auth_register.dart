@@ -1,7 +1,7 @@
 import 'package:firebase_auth_package/src/auth_service.dart';
 import 'package:firebase_auth_package/src/auth_validations.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions_errors.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';
 
 class AuthRegister {
   final AuthService authService;
@@ -12,18 +12,18 @@ class AuthRegister {
       String passwordConfirmation) async {
     if (!AuthValidations.isRegisterAllFieldsFilled(
         name, email, password, passwordConfirmation)) {
-      AuthExceptions.throwException(
-          AuthExceptionsErrors.INTERNAL_ERROR_BLANK_FIELDS);
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_BLANK_FIELDS);
     }
 
     if (!AuthValidations.isPasswordEqualConfirmation(
         password, passwordConfirmation)) {
-      AuthExceptions.throwException(
-          AuthExceptionsErrors.INTERNAL_ERROR_PASSWORD_CONFIRMATION);
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_PASSWORD_CONFIRMATION);
     }
 
     return await authService.register(email, password).catchError((error) {
-      AuthExceptions.throwException(error.toString());
+      AuthException.throwException(error.toString());
     });
   }
 }

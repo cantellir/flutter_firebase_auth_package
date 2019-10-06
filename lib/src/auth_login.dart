@@ -1,7 +1,7 @@
 import 'package:firebase_auth_package/src/auth_service.dart';
 import 'package:firebase_auth_package/src/auth_validations.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions.dart';
-import 'package:firebase_auth_package/src/exceptions/auth_exceptions_errors.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';
 
 class AuthLogin {
   final AuthService authService;
@@ -10,12 +10,12 @@ class AuthLogin {
 
   Future<void> login(String email, String password) async {
     if (!AuthValidations.isLoginEmailAndPasswordFilled(email, password)) {
-      AuthExceptions.throwException(
-          AuthExceptionsErrors.INTERNAL_ERROR_BLANK_EMAIL_PASSWORD);
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL_PASSWORD);
     }
 
     return await authService.login(email, password).catchError((error) {
-      AuthExceptions.throwException(error.toString());
+      AuthException.throwException(error.toString());
     });
   }
 }
