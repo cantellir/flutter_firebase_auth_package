@@ -76,4 +76,14 @@ class AuthServiceMock extends AuthService {
 
     return;
   }
+
+  @override
+  Future<void> loginByGoogle() {    
+    return null;
+  }
+
+  @override
+  Future<void> loginByFacebook() {
+    return null;
+  }
 }

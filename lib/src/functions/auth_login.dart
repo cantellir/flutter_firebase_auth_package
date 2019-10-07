@@ -14,8 +14,16 @@ class AuthLogin {
           AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL_PASSWORD);
     }
 
-    return await authService.login(email, password).catchError((error) {
+    return await authService.login(email, password).catchError((error) async {
       AuthException.throwException(error.toString());
     });
+  }
+
+  Future<void> loginByGoogle() async {
+    return await authService.loginByGoogle();
+  }
+
+  Future<void> loginByFacebook() async {
+    return await authService.loginByFacebook();
   }
 }

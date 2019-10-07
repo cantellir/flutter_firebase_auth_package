@@ -12,6 +12,16 @@ class AuthFunctions {
     return await authLogin.login(email, password);
   }
 
+  Future<void> loginByGoogle() async {
+    AuthLogin authLogin = AuthLogin(_authServiceFirestore);
+    return await authLogin.loginByGoogle();
+  }
+
+  Future<void> loginByFacebook() async {
+    AuthLogin authLogin = AuthLogin(_authServiceFirestore);
+    return await authLogin.loginByFacebook();
+  }
+
   Future<void> register(String name, String email, String password,
       String passwordConfirmation) async {
     AuthRegister authRegister = AuthRegister(_authServiceFirestore);
