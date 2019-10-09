@@ -6,6 +6,7 @@ class AuthExceptionMessages {
   static const String MESSAGE_BLANK_EMAIL_PASSWORD =
       'E-mail e senha devem ser preenchidos';
   static const String MESSAGE_BLANK_EMAIL = 'E-mail deve ser preenchido';
+  static const String MESSAGE_LOGIN_BY_GOOGLE_CANCELLED = 'Login pelo Google cancelado';
 
   static const String MESSAGE_WRONG_PASSWORD = 'Senha inválida';
   static const String MESSAGE_INVALID_EMAIL = 'E-mail inválido';
