@@ -24,6 +24,8 @@ class AuthExceptionMap {
     AuthExceptionErrors.FIREBASE_ERROR_TOO_MANY_REQUESTS:
         AuthExceptionMessages.MESSAGE_TOO_MANY_REQUESTS,
     AuthExceptionErrors.FIREBASE_ERROR_NETWORK_REQUEST_FAILED:
-        AuthExceptionMessages.MESSAGE_NETWORK_REQUEST_FAILED
+        AuthExceptionMessages.MESSAGE_NETWORK_REQUEST_FAILED,
+    AuthExceptionErrors.FIREBASE_ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL:
+        AuthExceptionMessages.MESSAGE_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL,
   };
 }

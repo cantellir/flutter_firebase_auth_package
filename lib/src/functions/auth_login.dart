@@ -20,10 +20,14 @@ class AuthLogin {
   }
 
   Future<void> loginByGoogle() async {
-    return await authService.loginByGoogle();
+    return await authService.loginByGoogle().catchError((error) {
+      AuthException.throwException(error.toString());
+    });
   }
 
   Future<void> loginByFacebook() async {
-    return await authService.loginByFacebook();
+    return await authService.loginByFacebook().catchError((error) {
+      AuthException.throwException(error.toString());
+    });
   }
 }

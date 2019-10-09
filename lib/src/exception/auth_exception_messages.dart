@@ -19,4 +19,7 @@ class AuthExceptionMessages {
       'Você tentou efetuar o login muitas vezes. Tente novamente mais tarde.';
   static const String MESSAGE_NETWORK_REQUEST_FAILED =
       'Parece que você está sem internet. Verifique sua conexão e tente novamente';
+
+  static const String MESSAGE_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL =
+      'Seu e-mail já está associado à um login com a conta do Google, ou com um cadastro direto. Não é possível logar através do Facebook.';
 }

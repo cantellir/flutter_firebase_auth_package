@@ -10,6 +10,7 @@ class AuthServiceMock extends AuthService {
   String weakPassword = '12345';
   String notFountEmail = 'notfound@test.com';
   String registeredEmail = 'registered@test.com';
+  String invalidCredentialEmail = 'invalidcredential@test.com';
 
   String validName = 'Peter Park';
 
@@ -78,7 +79,7 @@ class AuthServiceMock extends AuthService {
   }
 
   @override
-  Future<void> loginByGoogle() {    
+  Future<void> loginByGoogle() {
     return null;
   }
 
