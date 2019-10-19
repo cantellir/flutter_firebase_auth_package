@@ -34,10 +34,8 @@ class AuthServiceFirestore implements AuthService {
   Future<void> loginByGoogle() async {
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
     final AuthCredential credential = GoogleAuthProvider.getCredential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-
     await _firebaseAuth.signInWithCredential(credential);
   }
 

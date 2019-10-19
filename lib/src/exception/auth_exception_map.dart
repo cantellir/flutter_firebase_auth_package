@@ -11,6 +11,8 @@ class AuthExceptionMap {
         AuthExceptionMessages.MESSAGE_BLANK_EMAIL_PASSWORD,
     AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL:
         AuthExceptionMessages.MESSAGE_BLANK_EMAIL,
+    AuthExceptionErrors.INTERNAL_ERROR_BLANK_PASSWORD:
+        AuthExceptionMessages.MESSAGE_BLANK_PASSWORD,
     AuthExceptionErrors.INTERNAL_LOGIN_BY_GOOGLE_CANCELLED:
         AuthExceptionMessages.MESSAGE_LOGIN_BY_GOOGLE_CANCELLED,
     AuthExceptionErrors.FIREBASE_ERROR_WRONG_PASSWORD:

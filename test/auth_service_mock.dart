@@ -12,8 +12,6 @@ class AuthServiceMock extends AuthService {
   String registeredEmail = 'registered@test.com';
   String invalidCredentialEmail = 'invalidcredential@test.com';
 
-  String validName = 'Peter Park';
-
   @override
   Future<void> login(String email, String password) async {
     if (email == validEmail && password == validPassword) {
