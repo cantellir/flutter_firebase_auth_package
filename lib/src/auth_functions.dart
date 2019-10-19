@@ -1,42 +1,73 @@
-import 'package:firebase_auth_package/src/functions/auth_login.dart';
-import 'package:firebase_auth_package/src/functions/auth_logout.dart';
-import 'package:firebase_auth_package/src/functions/auth_recover_password.dart';
-import 'package:firebase_auth_package/src/functions/auth_register.dart';
+import 'package:firebase_auth_package/src/auth_validations.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception.dart';
+import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';
+import 'package:firebase_auth_package/src/service/auth_service.dart';
 import 'package:firebase_auth_package/src/service/auth_service_firestore.dart';
 
 class AuthFunctions {
-  AuthServiceFirestore _authServiceFirestore = AuthServiceFirestore();
+  AuthService _authService;
+  AuthFunctions({AuthService authService}) {
+    this._authService = authService ?? AuthServiceFirestore();
+  }
 
   Future<void> login(String email, String password) async {
-    AuthLogin authLogin = AuthLogin(_authServiceFirestore);
-    return await authLogin.login(email, password);
+    if (!AuthValidations.isLoginEmailAndPasswordFilled(email, password)) {
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL_PASSWORD);
+    }
+
+    return await _authService.login(email, password).catchError((error) async {
+      AuthException.throwException(error.toString());
+    });
   }
 
   Future<void> loginByGoogle() async {
-    AuthLogin authLogin = AuthLogin(_authServiceFirestore);
-    return await authLogin.loginByGoogle();
+    return await _authService.loginByGoogle().catchError((error) {
+      AuthException.throwException(error.toString());
+    });
   }
 
   Future<void> loginByFacebook() async {
-    AuthLogin authLogin = AuthLogin(_authServiceFirestore);
-    return await authLogin.loginByFacebook();
+    return await _authService.loginByFacebook().catchError((error) {
+      AuthException.throwException(error.toString());
+    });
   }
 
-  Future<void> register(String name, String email, String password,
-      String passwordConfirmation) async {
-    AuthRegister authRegister = AuthRegister(_authServiceFirestore);
-    return await authRegister.register(
-        name, email, password, passwordConfirmation);
+  Future<void> register(
+      String email, String password, String passwordConfirmation) async {
+    if (!AuthValidations.isRegisterEmailFilled(email)) {
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL);
+    }
+
+    if (!AuthValidations.isRegisterPasswordFilled(password)) {
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_BLANK_PASSWORD);
+    }
+
+    if (!AuthValidations.isPasswordEqualConfirmation(
+        password, passwordConfirmation)) {
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_PASSWORD_CONFIRMATION);
+    }
+
+    return await _authService.register(email, password).catchError((error) {
+      AuthException.throwException(error.toString());
+    });
   }
 
   Future<void> logout() async {
-    AuthLogout authLogout = AuthLogout(_authServiceFirestore);
-    return await authLogout.logout();
+    await _authService.logout();
   }
 
   Future<void> recoverPassword(String email) async {
-    AuthRecoverPassword authRecoverPassword =
-        AuthRecoverPassword(_authServiceFirestore);
-    return await authRecoverPassword.recoverPassword(email);
+    if (!AuthValidations.isRecoverEmailFilled(email)) {
+      AuthException.throwException(
+          AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL);
+    }
+
+    await _authService.recoverPassword(email).catchError((error) {
+      AuthException.throwException(error.toString());
+    });
   }
 }

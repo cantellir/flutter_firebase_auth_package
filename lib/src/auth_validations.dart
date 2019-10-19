@@ -3,12 +3,12 @@ class AuthValidations {
     return (email.isNotEmpty && password.isNotEmpty);
   }
 
-  static bool isRegisterAllFieldsFilled(
-      String name, String email, String password, String passwordConfirmation) {
-    return (name.isNotEmpty &&
-        email.isNotEmpty &&
-        password.isNotEmpty &&
-        passwordConfirmation.isNotEmpty);
+  static bool isRegisterEmailFilled(String email) {
+    return (email.isNotEmpty);
+  }
+
+  static bool isRegisterPasswordFilled(String password) {
+    return (password.isNotEmpty);
   }
 
   static bool isPasswordEqualConfirmation(
