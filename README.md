@@ -1,6 +1,16 @@
 # firebase_auth_package
 
-A new Flutter package project.
+A Flutter package to implement most popular firebase auth ways.
+
+This package implements:
+- Facebook login
+- Google login
+- E-mail and password login/register
+
+This package depends of:
+- [firebase_auth](https://pub.dev/packages/firebase_auth)
+- [google_sign_in](https://pub.dev/packages/google_sign_in)
+- [flutter_facebook_login](https://pub.dev/packages/flutter_facebook_login)
 
 ## Getting Started
 
