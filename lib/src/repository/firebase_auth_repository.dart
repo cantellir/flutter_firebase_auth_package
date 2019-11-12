@@ -2,9 +2,9 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_package/src/service/auth_service.dart';
+import 'package:firebase_auth_package/src/repository/auth_repository.dart';
 
-class AuthServiceFirestore implements AuthService {
+class FirebaseAuthRepository implements AuthRepository {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   GoogleSignIn _googleSignIn = GoogleSignIn();
 
@@ -46,5 +46,16 @@ class AuthServiceFirestore implements AuthService {
     final AuthCredential credential = FacebookAuthProvider.getCredential(
         accessToken: result.accessToken.token);
     await _firebaseAuth.signInWithCredential(credential);
+  }
+
+  @override
+  Future<String> getEmail() async {
+    return (await _firebaseAuth.currentUser()).email;
+  }
+
+  @override
+  Future<bool> isLoggedIn() async {
+    final currentUser = await _firebaseAuth.currentUser();
+    return currentUser != null;
   }
 }

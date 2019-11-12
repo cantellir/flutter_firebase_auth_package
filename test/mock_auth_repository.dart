@@ -1,8 +1,8 @@
 import 'package:firebase_auth_package/firebase_auth_package.dart';
-import 'package:firebase_auth_package/src/service/auth_service.dart';
 import 'package:firebase_auth_package/src/exception/auth_exception_errors.dart';
+import 'package:firebase_auth_package/src/repository/auth_repository.dart';
 
-class AuthServiceMock extends AuthService {
+class MockAuthRepository extends AuthRepository {
   String validEmail = 'validemail@test.com';
   String validPassword = 'validpassword';
   String invalidEmail = 'invalidemail@test.com';
@@ -83,6 +83,16 @@ class AuthServiceMock extends AuthService {
 
   @override
   Future<void> loginByFacebook() {
+    return null;
+  }
+
+  @override
+  Future<String> getEmail() {
+    return null;
+  }
+
+  @override
+  Future<bool> isLoggedIn() {
     return null;
   }
 }
