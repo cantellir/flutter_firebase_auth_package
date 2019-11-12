@@ -1,6 +1,6 @@
 name: firebase_auth_package
 description: A Flutter package to implement most popular firebase auth ways.
-version: 0.0.1
+version: 0.0.2
 author: Rodrigo Cantelli <cantelli.r@gmail.com>
 homepage: https://github.com/cantellir
 repository: https://github.com/cantellir/flutter_firebase_auth_package
