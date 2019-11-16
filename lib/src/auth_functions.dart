@@ -16,7 +16,9 @@ class AuthFunctions {
           AuthExceptionErrors.INTERNAL_ERROR_BLANK_EMAIL_PASSWORD);
     }
 
-    return await _authRepository.login(email, password).catchError((error) async {
+    return await _authRepository
+        .login(email, password)
+        .catchError((error) async {
       AuthException.throwException(error.toString());
     });
   }
@@ -58,6 +60,14 @@ class AuthFunctions {
 
   Future<void> logout() async {
     await _authRepository.logout();
+  }
+
+  Future<bool> isLoggedIn() async {
+    return await _authRepository.isLoggedIn();
+  }
+
+  Future<String> getEmail() async {
+    return await _authRepository.getEmail();
   }
 
   Future<void> recoverPassword(String email) async {
